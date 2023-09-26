@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 206658537}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.18014279, g: 0.21646452, b: 0.28689516, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &4
 LightmapSettings:
@@ -543,23 +543,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 41f08c35745be45418cd81746e1fea81, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 74.4000015
+      value: 74.4
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 41f08c35745be45418cd81746e1fea81, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.01999998
+      value: 1.02
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 41f08c35745be45418cd81746e1fea81, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -23.7700005
+      value: -23.77
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 41f08c35745be45418cd81746e1fea81, type: 3}
       propertyPath: m_LocalRotation.w
-      value: .707106829
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 41f08c35745be45418cd81746e1fea81, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -.707106829
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 41f08c35745be45418cd81746e1fea81, type: 3}
       propertyPath: m_LocalRotation.y
@@ -569,6 +569,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 41f08c35745be45418cd81746e1fea81, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6db7520959539465c86622c38bc5515c, type: 2}
     m_RemovedComponents:
     - {fileID: 9500000, guid: 41f08c35745be45418cd81746e1fea81, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 41f08c35745be45418cd81746e1fea81, type: 3}

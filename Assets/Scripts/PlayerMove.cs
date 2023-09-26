@@ -4,21 +4,31 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    public float moveSpeed = 5.0f;  // プレイヤーの移動速度
-    public float rotationSpeed = 100.0f;  // プレイヤーの回転速度
-    public float jumpForce = 8.0f;  // ジャンプの力
+    public float moveSpeed = 50.0f;  // プレイヤーの移動速度
+    public float rotationSpeed = 10.0f;  // プレイヤーの回転速度
+    public float jumpForce = 80.0f;  // ジャンプの力
 
     private bool isGrounded = true;  // 地面に接しているかどうか
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        //float eulerAngleZ = transform.eulerAngles.z;
+        //var min = -20;
+        //var max = 20;
+
+        //var a = eulerAngleZ;
+        //a = Mathf.Clamp(eulerAngleZ, min, max);
+
+
+        //transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, a);
+
         // WASDキーの入力を取得
         float moveInputHorizontal = Input.GetAxis("Horizontal");
         float moveInputVertical = Input.GetAxis("Vertical");
@@ -34,14 +44,10 @@ public class PlayerMove : MonoBehaviour
             transform.Rotate(Vector3.up, rotationAngle * rotationSpeed * Time.deltaTime);
         }
 
-        // ジャンプ
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-        {
-            Jump();
-        }
-
         // プレイヤーを移動させる
+        //transform.up = new Vector3(0, moveSpeed * Time.deltaTime, 0);
         transform.Translate(movement * moveSpeed * Time.deltaTime, Space.World);
+
     }
 
     private void Jump()

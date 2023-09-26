@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class PlanetGravity : MonoBehaviour
 {
-	public GameObject planet;       // 引力の発生する星
+	GameObject planet;       // 引力の発生する星
 	public float accelerationScale; // 加速度の大きさ
 	public Rigidbody rb;
+
+	void Start()
+	{
+		planet = GameObject.Find("Stage");
+	}
 
 	void FixedUpdate()
 	{

@@ -13,6 +13,8 @@ public class LauncherManager : MonoBehaviourPunCallbacks
     public GameObject ConnectingPanel;
     public GameObject LobbyPanel;
 
+    public Text statusText;
+
     #region Unity Methods
 
     private void Start()
@@ -72,9 +74,32 @@ public class LauncherManager : MonoBehaviourPunCallbacks
     }
 
     public override void OnJoinedRoom() //ルームに入ったら呼ばれる
-    {
+    { 
         Debug.Log(PhotonNetwork.NickName+ "joined to"+ PhotonNetwork.CurrentRoom.Name);
-        PhotonNetwork.LoadLevel("GameScene"); //シーンをロード
+        int playerCount = PhotonNetwork.CurrentRoom.PlayerCount;
+        if (playerCount != 2)
+        {
+            statusText.text = "惑星探索中";
+        }
+        else
+        {
+            statusText.text = "惑星が見つかりました。ワープします。";
+        }
+    }
+
+    public override void OnPlayerEnteredRoom(Player newPlayer)
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            if (PhotonNetwork.CurrentRoom.PlayerCount == 2)
+            {
+                PhotonNetwork.IsMessageQueueRunning = false;
+                PhotonNetwork.CurrentRoom.IsOpen = false;
+
+                statusText.text = "惑星が見つかりました。ワープします。";
+                PhotonNetwork.LoadLevel("GameScene");
+            }
+        }
     }
 
     #endregion
@@ -92,7 +117,7 @@ public class LauncherManager : MonoBehaviourPunCallbacks
 
         // 作成するルームのルーム設定を行う
         var roomOptions = new RoomOptions();
-        roomOptions.MaxPlayers = 4;
+        roomOptions.MaxPlayers = 2;
         roomOptions.CustomRoomProperties = initialProps;
         roomOptions.CustomRoomPropertiesForLobby = propsForLobby;
 

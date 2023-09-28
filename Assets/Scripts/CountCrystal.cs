@@ -12,6 +12,18 @@ public class CountCrystal : MonoBehaviourPunCallbacks
     [SerializeField] float needTime;
     Image image2;
     Text playerName;
+    PlayerHPManager playerHPManager;
+    PlayerMove playerMove;
+    ChangeWepon changeWepon;
+
+    [SerializeField] Button uniqueButton;
+    [SerializeField] Button ultButton;
+    [SerializeField] Image radarImage;
+    [SerializeField] Image silentImage;
+    [SerializeField] Image lazerImage;
+    [SerializeField] Image stealthImage;
+    [SerializeField] Image missileImage;
+    [SerializeField] GameObject arrow;
 
     private PhotonView m_photonView = null;
 
@@ -30,6 +42,10 @@ public class CountCrystal : MonoBehaviourPunCallbacks
         {
             image2 = GameObject.Find("ValueImage").GetComponent<Image>();
             playerName = GameObject.Find("PlayerNameText").GetComponent<Text>();
+
+            playerHPManager = GetComponent<PlayerHPManager>();
+            playerMove = GetComponent<PlayerMove>();
+            changeWepon = GetComponent<ChangeWepon>();
         }
 
         crystalCount = 0;
@@ -50,10 +66,25 @@ public class CountCrystal : MonoBehaviourPunCallbacks
             if (buttonTime > needTime)
             {
                 crystalCount++;
-                Debug.Log(crystalCount);
                 state = getState.Gotcha;
                 buttonTime = 0;
                 image2.fillAmount = 0;
+                if (crystalCount == 1)
+                {
+                    Count1();
+                }
+                if (crystalCount == 2)
+                {
+                    Count2();
+                }
+                if (crystalCount == 3)
+                {
+                    Count3();
+                }
+                if (crystalCount == 4)
+                {
+                    m_photonView.RPC("LodingScene", RpcTarget.All, playerName.text);
+                }
             }
         }
         if(state == getState.Nomal)
@@ -61,10 +92,7 @@ public class CountCrystal : MonoBehaviourPunCallbacks
             buttonTime = 0;
             image2.fillAmount = 0;
         }
-        if(crystalCount == 4)
-        {
-            m_photonView.RPC("LodingScene", RpcTarget.All, playerName.text);
-        }
+        
     }
 
     [PunRPC]
@@ -72,6 +100,62 @@ public class CountCrystal : MonoBehaviourPunCallbacks
     {
         ResultManager.winnerName = name;
         SceneManager.LoadScene("ResultScene");
+    }
+
+    private void Count1()
+    {
+        var random1 = Random.Range(0, 3);
+        if(random1 == 0)
+        {
+            playerHPManager.hp += 50;   //HP増加
+        }
+        if (random1 == 1)
+        {
+            playerMove.bonus = 3;   //スピード増加
+        }
+        if(random1 == 2)
+        {
+            needTime = 2;   //採取速度アップ
+        }
+    }
+
+    private void Count2()
+    {
+        uniqueButton.image.enabled = true;
+
+        var random2 = Random.Range(0, 3);
+        if (random2 == 0)
+        {
+            radarImage.enabled = true;   //レーダー追加
+            arrow.SetActive(true);
+        }
+        if (random2 == 1)
+        {
+            silentImage.enabled = true; //静音弾追加
+            changeWepon.uniqueState = ChangeWepon.UniqueState.Silent;
+        }
+        if (random2 == 2)
+        {
+            lazerImage.enabled = true;  //レーザー追加
+            changeWepon.uniqueState = ChangeWepon.UniqueState.Lazer;
+        }
+    }
+
+    private void Count3()
+    {
+        ultButton.image.enabled = true;
+
+        var random3 = Random.Range(0, 2);
+        if (random3 == 0)
+        {
+            stealthImage.enabled = true;    //ステルス追加
+            changeWepon.ultState = ChangeWepon.UltState.Stealth;
+        }
+        if (random3 == 1)
+        {
+            missileImage.enabled = true;    //ミサイル追加
+            changeWepon.ultState = ChangeWepon.UltState.Missile;
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -99,7 +183,7 @@ public class CountCrystal : MonoBehaviourPunCallbacks
     private void OnTriggerExit(Collider other)
     {
         buttonTime = 0;
-        image2.fillAmount = 0;
+        image2.fillAmount = 0;//
         state = getState.Nomal;
     }
     private void ResetValue()

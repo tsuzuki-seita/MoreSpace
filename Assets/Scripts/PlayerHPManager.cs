@@ -8,7 +8,7 @@ using Photon.Pun;
 public class PlayerHPManager : MonoBehaviourPunCallbacks
 {
     public Slider slider;
-    Slider fieldSlider;
+    public Slider fieldSlider;
     public int hp;
     public int nomalDamage;
 
@@ -18,10 +18,11 @@ public class PlayerHPManager : MonoBehaviourPunCallbacks
     void Start()
     {
         hp = 100;
-        if (photonView.IsMine) //このオブジェクトが自分がPhotonを介して生成したものならば
-        {
-            fieldSlider = GameObject.Find("PlayerHP").GetComponent<Slider>();
-        }
+        //if (photonView.IsMine) //このオブジェクトが自分がPhotonを介して生成したものならば
+        //{
+        //    fieldSlider = GameObject.Find("PlayerHP").GetComponent<Slider>();
+        //}
+        
         slider.maxValue = hp;
         slider.value = hp;
         fieldSlider.maxValue = hp;
@@ -53,7 +54,7 @@ public class PlayerHPManager : MonoBehaviourPunCallbacks
         {
             hp -= nomalDamage;
             slider.value = hp;
-            fieldSlider.value = hp;
+            fieldSlider.value = hp;//
         }
     }
 

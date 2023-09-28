@@ -26,6 +26,6 @@ public class CameraMove : MonoBehaviour
 
         //FPS視点
         //transform.position = player.transform.position + player.transform.forward * -0.5f + player.transform.up * 1;
-        transform.position = player.transform.position + player.transform.forward * -50 + player.transform.up * 20;
+        transform.position = player.transform.position + player.transform.forward * -60 + player.transform.up * 30;
     }
 }

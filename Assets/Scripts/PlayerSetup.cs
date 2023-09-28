@@ -15,6 +15,7 @@ public class PlayerSetup : MonoBehaviourPunCallbacks
     {
         if (photonView.IsMine) //このオブジェクトが自分がPhotonを介して生成したものならば
         {
+            GameObject.Find("WorldCanvas").GetComponent<Canvas>().enabled = true;
             transform.GetComponent<PlayerMove>().enabled = true; //MovementController.csを有効にする
             FPSCamera.GetComponent<Camera>().enabled = true; //FPSCameraのCameraコンポーネントを有効にする
             //rigidbody.useGravity = true;
@@ -22,6 +23,7 @@ public class PlayerSetup : MonoBehaviourPunCallbacks
             GetComponent<PlayerHPManager>().enabled = true;
             //GetComponent<AudioSource>().enabled = true;
             GetComponent<PlayerAttack>().enabled = true;
+            GetComponent<ChangeWepon>().enabled = true;
             //foreach (SimpleMouseRotator rot in GetComponentsInChildren<SimpleMouseRotator>())
             //    rot.enabled = true;
 

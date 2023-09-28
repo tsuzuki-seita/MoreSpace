@@ -5,15 +5,15 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     public float moveSpeed = 50.0f;  // プレイヤーの移動速度
-    public float rotationSpeed = 10.0f;  // プレイヤーの回転速度
-    public float jumpForce = 80.0f;  // ジャンプの力
+    public float rotationSpeed = 5.0f;  // プレイヤーの回転速度
+    public float bonus;
 
     private bool isGrounded = true;  // 地面に接しているかどうか
 
     // Start is called before the first frame update
     void Start()
     {
-
+        bonus = 1;
     }
 
     // Update is called once per frame
@@ -46,23 +46,7 @@ public class PlayerMove : MonoBehaviour
 
         // プレイヤーを移動させる
         //transform.up = new Vector3(0, moveSpeed * Time.deltaTime, 0);
-        transform.Translate(movement * moveSpeed * Time.deltaTime, Space.World);
+        transform.Translate(movement * moveSpeed * Time.deltaTime * bonus, Space.World);
 
-    }
-
-    private void Jump()
-    {
-        // ジャンプ力を加える
-        GetComponent<Rigidbody>().AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        isGrounded = false;
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        // 地面に接触したらジャンプ可能にする
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = true;
-        }
     }
 }

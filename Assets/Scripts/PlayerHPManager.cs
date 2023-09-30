@@ -11,6 +11,8 @@ public class PlayerHPManager : MonoBehaviourPunCallbacks
     public Slider fieldSlider;
     public int hp;
     public int nomalDamage;
+    public int missileDamage;
+    public int lazerDamage;
 
     private PhotonView m_photonView = null;
 
@@ -56,6 +58,23 @@ public class PlayerHPManager : MonoBehaviourPunCallbacks
             slider.value = hp;
             fieldSlider.value = hp;//
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Missile")
+        {
+            hp -= nomalDamage;
+            slider.value = hp;
+            fieldSlider.value = hp;
+        }
+    }
+
+    private void OnParticleTrigger()
+    {
+        hp -= lazerDamage;
+        slider.value = hp;
+        fieldSlider.value = hp;
     }
 
     //void IPunObservable.OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

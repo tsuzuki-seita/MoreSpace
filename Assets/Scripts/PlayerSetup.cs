@@ -7,6 +7,7 @@ using Photon.Pun;
 public class PlayerSetup : MonoBehaviourPunCallbacks
 {
     [SerializeField] GameObject FPSCamera;
+    [SerializeField] GameObject Arrow;
     [SerializeField] Canvas playerCamvas;
     GameObject playerNameText;
 
@@ -24,6 +25,7 @@ public class PlayerSetup : MonoBehaviourPunCallbacks
             //GetComponent<AudioSource>().enabled = true;
             GetComponent<PlayerAttack>().enabled = true;
             GetComponent<ChangeWepon>().enabled = true;
+            Arrow.GetComponent<DirectionMark>().enabled = true;
             //foreach (SimpleMouseRotator rot in GetComponentsInChildren<SimpleMouseRotator>())
             //    rot.enabled = true;
 

@@ -7,6 +7,11 @@ TagManager:
   - Ground
   - Crystal
   - NomalBullet
+  - RedArrow
+  - BlueArrow
+  - Missile
+  - RedMuzzle
+  - BlueMuzzle
   layers:
   - Default
   - TransparentFX

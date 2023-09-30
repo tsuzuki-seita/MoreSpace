@@ -22,14 +22,19 @@ public class DirectionMark : MonoBehaviourPunCallbacks
 
     void FirstCheck()
     {
-        if (transform.parent.gameObject.name == "BluePlayer(Clone)")
+        //if (transform.parent.gameObject.name == "BluePlayer(Clone)")
+        //{
+        //    target = GameObject.Find("RedPlayer(Clone)").transform;
+        //}
+        //if (transform.parent.gameObject.name == "RedPlayer(Clone)")
+        //{
+        //    target = GameObject.Find("BluePlayer(Clone)").transform;
+        //}
+        if (!photonView.IsMine)
         {
-            target = GameObject.Find("RedPlayer(Clone)").transform;
+            target = GameObject.FindWithTag("Player").transform;
         }
-        if (transform.parent.gameObject.name == "RedPlayer(Clone)")
-        {
-            target = GameObject.Find("BluePlayer(Clone)").transform;
-        }
+
         isFirst = false;
     }
 
@@ -40,8 +45,10 @@ public class DirectionMark : MonoBehaviourPunCallbacks
         {
             FirstCheck();
         }
+        Vector3 posi = target.transform.localPosition;
+
         // プレイヤーからターゲットまでのベクトルを計算
-        Vector3 Direction = (target.position - player.transform.position).normalized;
+        Vector3 Direction = (posi - player.transform.position).normalized;
 
         // 求めた方向への回転量を求める
         Quaternion RotationalVolume = Quaternion.LookRotation(Direction, Vector3.up);

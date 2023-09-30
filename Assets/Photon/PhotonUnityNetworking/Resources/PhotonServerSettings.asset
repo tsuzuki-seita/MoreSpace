@@ -40,6 +40,7 @@ MonoBehaviour:
   - Fire
   - RespawnSpaceship
   - LodingScene
+  - RPCSetInvisible
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class MissileMove : MonoBehaviour
+public class MissileMove : MonoBehaviourPunCallbacks
 {
-    [SerializeField]
     Transform target;
     [SerializeField]
     float time = 1;
@@ -24,6 +24,8 @@ public class MissileMove : MonoBehaviour
     Vector3 acceleration;
     Transform thisTransform;
 
+    bool isFirst;
+
     public Transform Target
     {
         set
@@ -36,21 +38,36 @@ public class MissileMove : MonoBehaviour
         }
     }
 
+    void FirstCheck()
+    {
+        if (photonView.IsMine)
+        {
+            target = GameObject.FindWithTag("Player").transform;
+        }
+
+        isFirst = false;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         thisTransform = transform;
         position = thisTransform.position;
         velocity = new Vector3(Random.Range(minInitVelocity.x, maxInitVelocity.x), Random.Range(minInitVelocity.y, maxInitVelocity.y), Random.Range(minInitVelocity.z, maxInitVelocity.z));
+
+        isFirst = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (target == null)
+        if (isFirst)
         {
-            return;
+            FirstCheck();
         }
+
+        //追加
+        if (!photonView.IsMine) return;
 
         acceleration = 2f / (time * time) * (target.position - position - time * velocity);
 

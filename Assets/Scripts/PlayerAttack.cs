@@ -16,7 +16,7 @@ public class PlayerAttack : MonoBehaviourPunCallbacks
     [SerializeField] Button nomalButton;
     [SerializeField] MeshRenderer mesh;
 
-    Transform target;
+    public Transform target;
 
     public enum WeaponState
     {
@@ -54,7 +54,7 @@ public class PlayerAttack : MonoBehaviourPunCallbacks
             if (weaponState == WeaponState.Nomal)
             {
                 PhotonNetwork.Instantiate(nomalBullet.name, muzzle.transform.position, Quaternion.identity);
-                EnemyAlart();
+                //EnemyAlart();
             }
             if (weaponState == WeaponState.Silent)
             {
@@ -70,8 +70,8 @@ public class PlayerAttack : MonoBehaviourPunCallbacks
                 for(int i = 0; i < 10; i++)
                 {
                     PhotonNetwork.Instantiate(missile.name, muzzle.transform.position, muzzle.transform.rotation);
-                    homing = PhotonNetwork.Instantiate(missile.name, muzzle.transform.position, muzzle.transform.rotation).GetComponent<MissileMove>();
-                    homing.Target = target;
+                    //homing = PhotonNetwork.Instantiate(missile.name, muzzle.transform.position, muzzle.transform.rotation).GetComponent<MissileMove>();
+                    //homing.Target = target;
                 }
                 
             }
@@ -96,8 +96,29 @@ public class PlayerAttack : MonoBehaviourPunCallbacks
     IEnumerator Invisible()
     {
         photonView.RPC("RPCSetInvisible", RpcTarget.All, true);
+        //invisiDemo(true);
         yield return new WaitForSeconds(5);
+
+        //invisiDemo(false);
         photonView.RPC("RPCSetInvisible", RpcTarget.All, false);
+    }
+
+    void invisiDemo(bool judge)
+    {
+        if (judge)
+        {
+            playerHPManager.nomalDamage = 0;
+            playerHPManager.missileDamage = 0;
+            playerHPManager.lazerDamage = 0;
+            mesh.enabled = false;
+        }
+        else
+        {
+            playerHPManager.nomalDamage = 15;
+            playerHPManager.missileDamage = 20;
+            playerHPManager.lazerDamage = 10;
+            mesh.enabled = true;
+        }
     }
 
     [PunRPC]

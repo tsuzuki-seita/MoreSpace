@@ -30,7 +30,7 @@ public class DirectionMark : MonoBehaviourPunCallbacks
         //{
         //    target = GameObject.Find("BluePlayer(Clone)").transform;
         //}
-        if (!photonView.IsMine)
+        if (photonView.IsMine)
         {
             target = GameObject.FindWithTag("Player").transform;
         }
@@ -45,10 +45,11 @@ public class DirectionMark : MonoBehaviourPunCallbacks
         {
             FirstCheck();
         }
-        Vector3 posi = target.transform.localPosition;
+        //追加
+        if (!photonView.IsMine) return;
 
         // プレイヤーからターゲットまでのベクトルを計算
-        Vector3 Direction = (posi - player.transform.position).normalized;
+        Vector3 Direction = (target.position - player.transform.position).normalized;
 
         // 求めた方向への回転量を求める
         Quaternion RotationalVolume = Quaternion.LookRotation(Direction, Vector3.up);
@@ -58,6 +59,8 @@ public class DirectionMark : MonoBehaviourPunCallbacks
 
         // 向きを反映
         transform.rotation = RotationalVolume * CorrectionVolume;
+        // そのオブジェクトから見て前方向に0.5だけ移動
+        //transform.position = player.position + player.transform.up * 5 + player.transform.forward * -1;
         //this.transform.LookAt(target);
     }
 }

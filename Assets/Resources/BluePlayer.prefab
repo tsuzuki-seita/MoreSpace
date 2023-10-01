@@ -40,7 +40,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 857401798}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d93574516eb44899b5bf46105ef3156, type: 3}
   m_Name: 
@@ -2209,6 +2209,7 @@ MonoBehaviour:
   Lazer: {fileID: 4478200963111520580}
   nomalButton: {fileID: 5748192904239833537}
   mesh: {fileID: 7521632119054529620}
+  target: {fileID: 0}
   weaponState: 0
 --- !u!114 &9213568102876387627
 MonoBehaviour:

@@ -11,6 +11,7 @@ public class BlueNomalBulletMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //player = GameObject.Find("BluePlayer(Clone)");
         player = GameObject.Find("BluePlayer(Clone)");
         rb = GetComponent<Rigidbody>();
 

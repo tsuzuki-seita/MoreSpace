@@ -22,7 +22,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8006505678180171754
 Transform:
   m_ObjectHideFlags: 0
@@ -111,11 +111,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3872324bdc8874adfac6b8085aad9b40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 7521632119054529647, guid: a24652415a453414c9221058e4265f4f, type: 3}
   time: 1
   lifeTime: 2
   limitAcceleration: 0
-  maxAcceleration: 50
+  maxAcceleration: 30
   minInitVelocity: {x: -50, y: -50, z: -50}
   maxInitVelocity: {x: 50, y: 50, z: 50}
 --- !u!54 &3307032794640714644

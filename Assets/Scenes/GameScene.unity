@@ -488,7 +488,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &250123976
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1770,7 +1770,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1720971042
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2384,6 +2384,36 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 9
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &2032422322
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2032422323}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &2032422323
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032422322}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 433, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2070200093
 Transform:
   m_ObjectHideFlags: 0
@@ -2426,9 +2456,21 @@ PrefabInstance:
       propertyPath: sceneViewId
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 3586763858603847199, guid: c44f687da7f8544c78cb9348fb577943, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5293326637445958149, guid: c44f687da7f8544c78cb9348fb577943, type: 3}
       propertyPath: sceneViewId
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6109608999192394247, guid: c44f687da7f8544c78cb9348fb577943, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8273087480238848584, guid: c44f687da7f8544c78cb9348fb577943, type: 3}
+      propertyPath: m_Constraints
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 9178029905038417094, guid: c44f687da7f8544c78cb9348fb577943, type: 3}
       propertyPath: m_RootOrder
@@ -2436,7 +2478,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9178029905038417094, guid: c44f687da7f8544c78cb9348fb577943, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 262.77118
+      value: 200.5
       objectReference: {fileID: 0}
     - target: {fileID: 9178029905038417094, guid: c44f687da7f8544c78cb9348fb577943, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2480,7 +2522,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9178029905038417329, guid: c44f687da7f8544c78cb9348fb577943, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9178029905038417788, guid: c44f687da7f8544c78cb9348fb577943, type: 3}
       propertyPath: sceneViewId
@@ -2499,21 +2541,25 @@ PrefabInstance:
       propertyPath: sceneViewId
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4478200963443542164, guid: a24652415a453414c9221058e4265f4f, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 2032422323}
     - target: {fileID: 4478200963462080402, guid: a24652415a453414c9221058e4265f4f, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4478200963462080402, guid: a24652415a453414c9221058e4265f4f, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5607103042014772597, guid: a24652415a453414c9221058e4265f4f, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5607103042014772597, guid: a24652415a453414c9221058e4265f4f, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7036358207268251942, guid: a24652415a453414c9221058e4265f4f, type: 3}
       propertyPath: sceneViewId
@@ -2525,15 +2571,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7521632119054529647, guid: a24652415a453414c9221058e4265f4f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 5.4
       objectReference: {fileID: 0}
     - target: {fileID: 7521632119054529647, guid: a24652415a453414c9221058e4265f4f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 417
+      value: 418.3
       objectReference: {fileID: 0}
     - target: {fileID: 7521632119054529647, guid: a24652415a453414c9221058e4265f4f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 56
+      value: 78.3
       objectReference: {fileID: 0}
     - target: {fileID: 7521632119054529647, guid: a24652415a453414c9221058e4265f4f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2569,7 +2615,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7521632119054529816, guid: a24652415a453414c9221058e4265f4f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7521632119054530517, guid: a24652415a453414c9221058e4265f4f, type: 3}
       propertyPath: sceneViewId
@@ -2591,6 +2637,10 @@ PrefabInstance:
     - target: {fileID: 3927857202075904093, guid: fcd2990a60de94086a53fbbba79f0384, type: 3}
       propertyPath: m_Name
       value: Missile
+      objectReference: {fileID: 0}
+    - target: {fileID: 3927857202075904093, guid: fcd2990a60de94086a53fbbba79f0384, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6080110930436923397, guid: fcd2990a60de94086a53fbbba79f0384, type: 3}
       propertyPath: sceneViewId

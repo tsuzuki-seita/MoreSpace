@@ -3,7 +3,7 @@
 "More Space!" is a 3D shooting game where you collect resources to strengthen your aircraft and fight.
 
 # DEMO
-![](https://cpp-learning.com/wp-content/uploads/2019/05/pyxel-190505-161951.gif)
+![Monosnap screencast 2024-07-01 13-37-19](https://github.com/tsuzuki-seita/MoreSpace/assets/131642694/da4bddd3-5c24-492e-bd34-163b44a7096f)
 
 One-on-one online competitive shooting game.
 By recovering resources, you can gain benefits such as increased speed and new weapons.
